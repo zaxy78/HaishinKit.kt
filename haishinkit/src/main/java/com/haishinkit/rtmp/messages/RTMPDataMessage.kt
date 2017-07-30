@@ -9,7 +9,7 @@ import com.haishinkit.rtmp.RTMPSocket
 import java.nio.ByteBuffer
 import java.util.ArrayList
 
-class RTMPDataMessage(val objectEncoding: RTMPObjectEncoding) : RTMPMessage(objectEncoding.dataType) {
+internal class RTMPDataMessage(val objectEncoding: RTMPObjectEncoding) : RTMPMessage(objectEncoding.dataType) {
     var handlerName: String? = null
     var arguments: ArrayList<Any?> = ArrayList()
 

@@ -5,7 +5,7 @@ import java.nio.ByteBuffer
 import com.haishinkit.rtmp.RTMPConnection
 import com.haishinkit.rtmp.RTMPSocket
 
-class RTMPSetChunkSizeMessage : RTMPMessage(RTMPMessage.Type.CHUNK_SIZE) {
+internal class RTMPSetChunkSizeMessage : RTMPMessage(RTMPMessage.Type.CHUNK_SIZE) {
     var size: Int = 0
 
     override fun encode(socket: RTMPSocket): ByteBuffer {

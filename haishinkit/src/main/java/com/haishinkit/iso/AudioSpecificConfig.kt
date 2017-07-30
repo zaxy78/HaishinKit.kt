@@ -8,7 +8,7 @@ import java.nio.ByteBuffer
  * @see http://wiki.multimedia.cx/index.php?title=MPEG-4_Audio.Audio_Specific_Config
  * @see http://wiki.multimedia.cx/?title=Understanding_AAC
  */
-class AudioSpecificConfig {
+internal class AudioSpecificConfig {
     enum class AudioObjectType(val rawValue: Byte) {
         UNKNOWN(0x00),
         AAC_MAIN(0x01),

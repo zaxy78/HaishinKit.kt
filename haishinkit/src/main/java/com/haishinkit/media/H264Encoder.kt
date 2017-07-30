@@ -7,7 +7,7 @@ import android.media.MediaFormat
 import android.media.MediaCodecInfo
 import android.provider.MediaStore
 
-class H264Encoder : EncoderBase(MIME) {
+internal class H264Encoder : EncoderBase(MIME) {
 
     private var bitRate = DEFAULT_BIT_RATE
     private var frameRate = DEFAULT_FRAME_RATE

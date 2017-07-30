@@ -5,7 +5,7 @@ import com.haishinkit.rtmp.RTMPSocket
 
 import java.nio.ByteBuffer
 
-class RTMPAbortMessage : RTMPMessage(RTMPMessage.Type.ABORT) {
+internal class RTMPAbortMessage : RTMPMessage(RTMPMessage.Type.ABORT) {
     var discarded: Int = 0
         private set
 

@@ -36,7 +36,43 @@ class RTMPStream(connection: RTMPConnection) : EventDispatcher(null) {
     enum class Codes(val rawValue: String, val level: String) {
         BUFFER_EMPTY("NetStream.Buffer.Empty", "status"),
         BUFFER_FLUSH("NetStream.Buffer.Flush", "status"),
-        BUFFER_FULL("NetStream.Buffer.Full", "status");
+        BUFFER_FULL("NetStream.Buffer.Full", "status"),
+        CONNECT_CLOSED("NetStream.Connect.Closed", "status"),
+        CONNECT_FAILED("NetStream.Connect.Failed", "error"),
+        CONNECT_REJECTED("NetStream.Connect.Rejected", "error"),
+        CONNECT_SUCCESS("NetStream.Connect.Success", "status"),
+        DRM_UPDATE_NEEDED("NetStream.DRM.UpdateNeeded", "status"),
+        FAILED("NetStream.Failed", "error"),
+        MULTI_STREAM_RESET("NetStream.MulticastStream.Reset", "status"),
+        PAUSE_NOTIFY("NetStream.Pause.Notify", "status"),
+        PLAY_FAILED("NetStream.Play.Failed", "error"),
+        PLAY_FILE_STRUCTURE_INVALID("NetStream.Play.FileStructureInvalid", "error"),
+        PLAY_INSUFFICIENT_BW("NetStream.Play.InsufficientBW", "status"),
+        PLAY_NO_SUPPORTED_TRACK_FOUND("NetStream.Play.NoSupportedTrackFound", "status"),
+        PLAY_REST("NetStream.Play.Reset", "status"),
+        PLAY_START("NetStream.Play.Start", "status"),
+        PLAY_STOP("NetStream.Play.Stop", "status"),
+        PLAY_STREAM_NOT_FOUND("NetStream.Play.StreamNotFound", "error"),
+        PLAY_TRANSITION("NetStream.Play.Transition", "status"),
+        PLAY_UNPUBLISH_NOTIFY("NetStream.Play.UnpublishNotify", "status"),
+        PUBLISH_BAD_NAME("NetStream.Publish.BadName", "status"),
+        PUBLISH_IDLE("NetStream.Publish.Idle", "status"),
+        PUBLISH_START("NetStream.Publish.Start", "status"),
+        RECORD_ALREADY_EXISTS("NetStream.Record.AlreadyExists", "status"),
+        RECORD_FAILED("NetStream.Record.Failed", "status"),
+        RECORD_NO_ACCESS("NetStream.Record.NoAccess", "error"),
+        RECORD_START("NetStream.Record.Start", "status"),
+        RECORD_STOP("NetStream.Record.Stop", "status"),
+        RECORD_DISK_QUOTA_EXCEEDED("NetStream.Record.DiskQuotaExceeded", "error"),
+        SECOND_SCREEN_START("NetStream.SecondScreen.Start", "status"),
+        SECOND_SCREEN_STOP("NetStream.SecondScreen.Stop", "status"),
+        SEEK_FAILDED("NetStream.Seek.Failed", "error"),
+        SEEK_INVALID_TIME("NetStream.Seek.InvalidTime", "error"),
+        SEEK_NOTIFY("NetStream.Seek.Notify", "status"),
+        STEP_NOTIFY("NetStream.Step.Notify", "status"),
+        UNPAUSE_NOTIFY("NetStream.Unpause.Notify", "status"),
+        UNPUBLISH_SUCCESS("NetStream.Unpublish.Success", "status"),
+        VIDEO_DIMENSION_CHANGE("NetStream.Video.DimensionChange", "status");
 
         fun data(description: String): Map<String, Any> {
             val data = HashMap<String, Any>()
@@ -54,7 +90,7 @@ class RTMPStream(connection: RTMPConnection) : EventDispatcher(null) {
         override fun handleEvent(event: Event) {
             val data = EventUtils.toMap(event)
             when (data["code"].toString()) {
-                "NetConnection.Connect.Success" -> connection!!.createStream(stream)
+                RTMPConnection.Codes.CONNECT_SUCCESS.rawValue -> connection!!.createStream(stream)
                 "NetStream.Publish.Start" -> stream.setReadyState(ReadyState.PUBLISHING)
                 else -> {
                 }
@@ -124,7 +160,9 @@ class RTMPStream(connection: RTMPConnection) : EventDispatcher(null) {
         val parameters = camera.parameters
         parameters.previewFormat = ImageFormat.NV21
         camera.parameters = parameters
-        camera.setPreviewCallback { bytes, camera -> getEncoderByName("video/avc").encodeBytes(bytes, System.nanoTime() / 1000000) }
+        camera.setPreviewCallback { bytes, camera ->
+            getEncoderByName("video/avc").encodeBytes(bytes, System.nanoTime() / 1000000)
+        }
     }
 
     @JvmOverloads fun publish(name: String?, howToPublish: HowToPublish = HowToPublish.LIVE) {

@@ -10,7 +10,7 @@ import com.haishinkit.rtmp.RTMPSocket
 
 import java.nio.ByteBuffer
 
-class RTMPAACAudioMessage : RTMPAudioMessage() {
+internal class RTMPAACAudioMessage : RTMPAudioMessage() {
     var aacPacketType: Byte = 0
     var config: AudioSpecificConfig? = null
 

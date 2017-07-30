@@ -5,8 +5,7 @@ import android.media.MediaCodecInfo
 import android.media.MediaFormat
 import java.io.IOException
 
-class AACEncoder : EncoderBase(MIME) {
-
+internal class AACEncoder : EncoderBase(MIME) {
     @Throws(IOException::class)
     override fun createMediaCodec(): MediaCodec {
         val codec = MediaCodec.createEncoderByType(MIME)

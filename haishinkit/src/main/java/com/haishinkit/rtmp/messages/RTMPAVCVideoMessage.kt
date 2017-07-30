@@ -5,7 +5,7 @@ import com.haishinkit.rtmp.RTMPSocket
 
 import java.nio.ByteBuffer
 
-class RTMPAVCVideoMessage : RTMPVideoMessage() {
+internal class RTMPAVCVideoMessage : RTMPVideoMessage() {
     var packetType: Byte = 0
     var compositeTime = 0
 

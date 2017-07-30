@@ -5,7 +5,7 @@ import com.haishinkit.rtmp.RTMPConnection
 import com.haishinkit.rtmp.RTMPSocket
 import java.nio.ByteBuffer
 
-class RTMPWindowAcknowledgementSizeMessage : RTMPMessage(RTMPMessage.Type.ACK) {
+internal class RTMPWindowAcknowledgementSizeMessage : RTMPMessage(RTMPMessage.Type.ACK) {
     var size: Int = 0
         private set
 

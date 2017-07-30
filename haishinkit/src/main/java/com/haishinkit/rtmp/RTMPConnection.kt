@@ -161,7 +161,6 @@ class RTMPConnection : EventDispatcher(null) {
             val chunkSizeC = socket.chunkSizeC
             var chunk = RTMPChunk.values().filter { v -> v.rawValue.toInt() == first.toInt() shr 6 }.first()
             val streamID = chunk.getStreamID(buffer)
-
             val payload: ByteBuffer
             val message: RTMPMessage
             if (chunk == RTMPChunk.THREE) {
@@ -176,12 +175,14 @@ class RTMPConnection : EventDispatcher(null) {
                 if (!payload.hasRemaining()) {
                     payload.flip()
                     message.decode(payload).execute(this)
+                    Log.v("", message.toString())
                     payloads.remove(streamID)
                 }
             } else {
                 message = chunk.decode(streamID, this, buffer)
                 if (message.length <= chunkSizeC) {
                     message.decode(buffer).execute(this)
+                    Log.v("", message.toString())
                 } else {
                     payload = ByteBuffer.allocate(message.length)
                     payload.put(buffer.array(), buffer.position(), chunkSizeC)

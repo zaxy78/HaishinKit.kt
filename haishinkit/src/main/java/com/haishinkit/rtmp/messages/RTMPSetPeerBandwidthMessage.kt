@@ -9,8 +9,8 @@ class RTMPSetPeerBandwidthMessage : RTMPMessage(RTMPMessage.Type.BANDWIDTH) {
     enum class Limit(val rawValue: Byte) {
         HARD(0x00),
         SOFT(0x01),
-        DYNAMIC(0x10),
-        UNKNOWN(0x00);
+        DYNAMIC(0x02),
+        UNKNOWN(Byte.MAX_VALUE);
     }
 
     var size = 0

@@ -7,7 +7,7 @@ import com.haishinkit.rtmp.RTMPStream
 
 import java.nio.ByteBuffer
 
-class RTMPUserControlMessage : RTMPMessage(RTMPMessage.Type.USER) {
+internal class RTMPUserControlMessage : RTMPMessage(RTMPMessage.Type.USER) {
     enum class Event(val rawValue: Short) {
         STREAM_BEGIN(0x00),
         STREAM_EOF(0x01),
