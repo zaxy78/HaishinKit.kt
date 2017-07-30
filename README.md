@@ -6,7 +6,7 @@ Coming soon... Camera and Microphone streaming library via RTMP for Android.
 ## Features
 ### RTMP
 - [ ] Authentication
-- [x] Publish and Recording (H264/AAC)
+- [x] Publish (H264/AAC)
 - [ ] Playback
 - [x] AMF0
 - [ ] AMF3
@@ -25,9 +25,16 @@ New BSD
 ## Donation
 Bitcoin
 ```txt
-1HtWpaYkRGZMnq253QsJP6xSKZRPoJ8Hrs
+1CWA9muX36QKBdJiRQJGpu2HvchfEpJbWr
+```
+
+## Android manifest
+```xml
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
 ## Related Project
 * HaishinKit.swift - Camera and Microphone streaming library via RTMP, HLS for iOS, macOS. Edit 
-  * https://github.com/shogo4405/lf.swift/
+  * https://github.com/shogo4405/HaishinKit.swift
