@@ -14,7 +14,6 @@ Coming soon... Camera and Microphone streaming library via RTMP for Android.
 - [ ] RTMPS
   - [ ] Native (RTMP over SSL/TSL)
   - [ ] Tunneled (RTMPT over SSL/TSL)
-- [ ] _RTMPT (Technical Preview)_
 
 ### Others
 - [x] Hardware acceleration for H264 video encoding/AAC audio encoding
@@ -30,9 +29,9 @@ Bitcoin
 
 ## Android manifest
 ```xml
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
 ## Related Project
