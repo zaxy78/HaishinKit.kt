@@ -35,5 +35,5 @@ Bitcoin
 ```
 
 ## Related Project
-* HaishinKit.swift - Camera and Microphone streaming library via RTMP, HLS for iOS, macOS. Edit 
+* HaishinKit.swift - Camera and Microphone streaming library via RTMP, HLS for iOS, macOS and tvOS.
   * https://github.com/shogo4405/HaishinKit.swift
